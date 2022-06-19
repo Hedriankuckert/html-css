@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" />
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Calculadora de Taxa Metabólica Basal (Método Harris-Benedict)</title>
+<link rel="profile" href="https://gmpg.org/xfn/11" />
+<link rel="pingback" href="https://pt.calcuworld.com/xmlrpc.php" />
+
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<meta name="description" content="Com o método de contagem de calorias Harris-Benedict, descobrir a quantidade diária de calorias recomendadas é fácil. Descubra sua taxa de metabolismo basal" />
+	<meta name="twitter:label1" content="Est. reading time" />
+	<meta name="twitter:data1" content="1 minuto" />
+	<script type="application/ld+json" class="yoast-schema-graph">
+
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='style-tools-css' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://pt.calcuworld.com/wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'   type='text/css' media='all' />
+<link rel='stylesheet' id='summonpress-footer-universal-css'  type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css'   type='text/css' media='all' />
+<link rel='stylesheet' id='twentytwelve-fonts-css' type='text/css' media='all' />
+<link rel='stylesheet' id='twentytwelve-style-css' type='text/css' media='all' />
+
+<link rel='stylesheet' id='easy-social-share-buttons-css' type='text/css' media='all' />
+<link rel='stylesheet' id='essb-cct-style-css'   type='text/css' media='all' />
+<script type='text/javascript' src='https://pt.calcuworld.com/wp-includes/js/jquery/jquery.min.js' defer='defer' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://pt.calcuworld.com/wp-includes/js/jquery/jquery-migrate.min.js' defer='defer' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='https://code.highcharts.com/highcharts.js' defer='defer' id='highcharts-js'></script>
+<script type='text/javascript' src='https://code.highcharts.com/modules/exporting.js' defer='defer' id='exporting-js'></script>
+<script type='text/javascript' src='https://pt.calcuworld.com/wp-content/plugins/summonpress-footer-universal-v1.0.1/public/js/summonpress-footer-universal-public.js' defer='defer' id='summonpress-footer-universal-js'></script>
+<link rel="https://api.w.org/" href="https://pt.calcuworld.com/wp-json/" /><link rel="alternate" type="application/json" href="https://pt.calcuworld.com/wp-json/wp/v2/pages/1229" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://pt.calcuworld.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://pt.calcuworld.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.9.3" />
+<link rel='shortlink' href='https://pt.calcuworld.com/?p=1229' />
+<link rel="alternate" type="application/json+oembed" />
+<link rel="alternate" type="text/xml+oembed" />
+<link rel="stylesheet" type="text/css" />
+<script type="text/javascript">var essb_settings = {"ajax_url":"https:\/\/pt.calcuworld.com\/wp-admin\/admin-ajax.php","essb3_nonce":"19b9d1b7aa","essb3_plugin_url":"https:\/\/pt.calcuworld.com\/wp-content\/plugins\/easy-social-share-buttons3","essb3_facebook_total":false,"essb3_admin_ajax":false,"essb3_internal_counter":false,"essb3_stats":true,"essb3_ga":true,"essb3_ga_mode":"simple","essb3_counter_button_min":0,"essb3_counter_total_min":0,"blog_url":"https:\/\/pt.calcuworld.com\/","ajax_type":"wp","essb3_postfloat_stay":false,"essb3_no_counter_mailprint":false,"essb3_single_ajax":false,"twitter_counter":"","post_id":1229};</script>    <span class="date" style="display: none;">2013-05</span>
+    <span class="autor" style="display: none;">admin</span>
+    <span class="type" style="display: none;">page</span>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand|Raleway" rel="stylesheet" type='text/css'>
+    <link rel="icon" href="https://pt.calcuworld.com/wp-content/themes/twentytwelve-child/images/cw40.png" type="image/png">
+    <link rel="shortcut icon" href="https://pt.calcuworld.com/wp-content/themes/twentytwelve-child/images/cw40.png" type="image/x-icon">
+  
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4541639-96']);
+  _gaq.push(['_setDomainName', 'calcuworld.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'https://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+ 
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.10&appId=378707772227213";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+ 
+
+
+
+<script type='text/javascript'>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+  (function() {
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.type = 'text/javascript';
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') +
+      '//securepubads.g.doubleclick.net/tag/js/gpt.js';
+    var node = document.getElementsByTagName('script')[0];
+    node.parentNode.insertBefore(gads, node);
+  })();
+</script>
+
+<script type='text/javascript'>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/13837015/CW_desktop_1x1', [1, 1], 'div-gpt-ad-1446806101390-0').addService(googletag.pubads());
+    googletag.defineSlot('/13837015/CW_desktop_head', [[728, 90],[728, 250],[980, 250], [980, 90], [970, 90],[970, 250]], 'div-gpt-ad-1446806101390-1').addService(googletag.pubads());
+    googletag.defineSlot('/13837015/CW_desktop_inf', [[336, 280], [468, 60]], 'div-gpt-ad-1446806101390-2').addService(googletag.pubads());
+    googletag.defineSlot('/13837015/CW_desktop_side', [[300, 600], [300, 250]], 'div-gpt-ad-1446806101390-3').addService(googletag.pubads());
+    googletag.defineSlot('/13837015/CW_desktop_side2', [[300, 600], [300, 250]], 'div-gpt-ad-1446806101390-4').addService(googletag.pubads());
+    googletag.defineSlot('/13837015/CW_desktop_sup', [[728, 90], [468, 60]], 'div-gpt-ad-1446806101390-5').addService(googletag.pubads());
+    googletag.pubads().setTargeting('subdominio', ['pt']);
+    googletag.pubads().setTargeting('tematica', ['']);
+    googletag.pubads().setTargeting('ID', ['1229']);
+        googletag.enableServices();
+  });
+</script>
+
+<script async src="https://ssm.codes/smart-tag/calcuworldcom.js"></script>
+
+    <script src="https://pt.calcuworld.com/wp-content/themes/twentytwelve-child/js/finance.js"></script>
+
+	<link rel="modulepreload" href="https://adgage.adkaora.space/summonpress/calcuworld/prod/adk-init.js" />
+	<script type="module" defer src="https://adgage.adkaora.space/summonpress/calcuworld/prod/adk-init.js"></script>
+	
+</head>
+
+<body style="background:#FFF;">			
+<div style="text-align: center; margin: 10px 0;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- CW_links -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1879349339774425"
+     data-ad-slot="3624556348"
+     data-ad-format="link"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+	
+	
+	
+	
+
+<script language="JavaScript">
+
+//AJAX
+function newAjaxUser() { 
+	var xmlhttp=false; 
+	try 
+	{ 
+		xmlhttp=new ActiveXObject("Msxml2.XMLHTTP"); //navegadores no IE
+	}
+	catch(e)
+	{ 
+		try
+		{ 
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"); //para IE
+		} 
+		catch(E) { xmlhttp=false; }
+	}
+	if (!xmlhttp && typeof XMLHttpRequest!="undefined") { xmlhttp=new XMLHttpRequest(); } 
+
+	return xmlhttp; 
+}
+//elminimar espacios
+function dltSpaces(value) {
+	var x=0, y=value.length-1;
+	while(value.charAt(x)==" ") x++;	
+	while(value.charAt(y)==" ") y--;	
+	return value.substr(x, y-x+1);
+}
+
+//valida nombre
+function calcIt() {
+	var divMensaje1=document.getElementById("mantener");
+	var divMensaje2=document.getElementById("quemar");
+	var divMensaje3=document.getElementById("subir");
+	var divMensaje4=document.getElementById("tmb");
+
+	var input1=document.getElementById("peso");
+	var peso=input1.value;
+	
+	var input2=document.getElementById("tipopeso2");
+	var libras=input2.value;
+	
+	var input3=document.getElementById("estatura");
+	var estatura=input3.value;
+	
+	var input4=document.getElementById("edad");
+	var edad=input4.value;
+	
+	var input5=document.getElementById("actividad");
+	var actividad=input5.value;
+	
+	var input6=document.getElementById("sexo1");
+	var sexo=input6.value;
+	
+	var textoAccion="calculando...";
+	
+	//formateando entrada
+	peso=dltSpaces(peso);
+	var pesoEscaped=escape(peso);
+	var pesoFormated = pesoEscaped.replace('%2C','.'); //si encuentra , lo pasa a .
+	
+	//formateando entrada
+	estatura=dltSpaces(estatura);
+	var estaturaEscaped=escape(estatura);
+	var estaturaFormated = estaturaEscaped.replace('%2C','.'); //si encuentra , lo pasa a .
+	
+	//formateando entrada
+	edad=dltSpaces(edad);
+	var edadEscaped=escape(edad);
+	var edadFormated = edadEscaped.replace('%2C','.'); //si encuentra , lo pasa a .
+	
+	if (input2.checked) libras = '1'; else libras = '0';
+	
+	if (input6.checked) sexo = '1'; else sexo = '0';
+	
+	divMensaje1.innerHTML=textoAccion; //cambio del mensaje de error
+	divMensaje2.innerHTML=textoAccion; //cambio del mensaje de error
+	divMensaje3.innerHTML=textoAccion; //cambio del mensaje de error
+	divMensaje4.innerHTML=textoAccion; //cambio del mensaje de error
+	
+	
+	if (libras == 1) {
+		peso *= 0.4536;
+	}
+	
+	if (sexo == 1) {
+		var result1 = 66 + (13.7 * peso) + (5 * estatura) - (6.8 * edad);
+	} else {
+		var result1 = 655 + (9.6 * peso) + (1.8 * estatura) - (4.7 * edad);
+	}
+	
+	divMensaje4.innerHTML=Math.round(result1);
+	divMensaje1.innerHTML=Math.round(result1 * actividad);
+	divMensaje3.innerHTML=Math.round(result1 * actividad * 1.15);
+	divMensaje2.innerHTML=Math.round(result1 * actividad * 0.85);
+}
+
+</script>	
+
+	
+<form name="calc" class="form-horizontal"> 
+  <fieldset> 
+<div  class="well well-large">
+ <div class="form-group">
+	 
+    <label class="col-sm-4 control-label" for="peso">Sexo:</label> 
+    
+    <div class="col-sm-8">
+    <label class="checkbox inline" for="sexo1">
+	    <input type="radio" checked="" value="M" id="sexo1" name="sexo"> Homem	</label>
+	
+	<label class="checkbox inline" for="sexo2">
+	    <input type="radio" value="F" id="sexo2" name="sexo"> Mulher	</label>
+    </div>
+  </div>
+ <div class="form-group">
+    <label for="peso" class="col-sm-4 control-label">Peso :</label> 
+    <div class="col-sm-8">
+    <input maxlength="5" type="text" class="span2" id="peso" name="peso"> 
+    <label class="checkbox inline"  for="tipopeso1" class="noprompt"><input type="radio" checked="" value="K" id="tipopeso1" name="tipopeso"> Quilos</label> 
+    <label class="checkbox inline"  for="tipopeso2" class="noprompt"><input type="radio" value="L" id="tipopeso2" name="tipopeso"> Libras</label> 
+    </div>
+  </div>
+ <div class="form-group">
+    <label for="estatura" class="col-sm-4 control-label">Estatura:</label> 
+    <div class="col-sm-8">
+    <div class="input-group">
+    <input maxlength="3" id="estatura" type="text" class="span2 form-control" name="estatura"> 
+    <div class="input-group-addon">cm</div> 
+    </div>
+    </div>
+  </div>
+   <div class="form-group"> 
+    <label for="edad" class="col-sm-4 control-label">Idade:</label> 
+    <div class="col-sm-8">
+    <div class="input-group">
+    <input maxlength="2" type="text" class="span2 form-control" id="edad" name="edad"> 
+    <div class="input-group-addon">anos</div>
+    </div>
+    </div> 
+  </div>
+ <div class="form-group"> 
+    <label for="actividad" class="col-sm-4 control-label">Nível de atividade:</label> 
+    <div class="col-sm-8">
+    <select id="actividad" size="1" name="actividad"> 
+      <option selected="true" value="1.2">Sedentário</option> 
+      <option value="1.375">Atividade ligeira</option> 
+      <option value="1.55">Atividade moderada</option> 
+      <option value="1.725">Atividade intensa</option> 
+      <option value="1.9">Atividade muito intensa</option> 
+    </select>   </div> </div>
+  <div align="center"> 
+    <span type="button" name="Button1" class="btn btn-success" id="Button1" onclick="calcIt();return false;" value="Calcular">Calcular </span>
+</div> 
+</div>
+
+  <div class="alert alert-success">
+  <div> 
+  	<label>Metabolismo basal:</label> 
+  	<span id="tmb" style="margin-left: .5em; font-size:18px; font-weight:bold;"></span>
+  </div>
+ <div> 
+  	<label>Calorias necessárias para manter o peso:</label> 
+  	<span id="mantener" style="margin-left: .5em; font-size:18px; font-weight:bold;"></span>
+  </div>
+  <div>
+  	<label>Calorias para emagrecer:</label> 
+  	<span id="quemar" style="margin-left: .5em; font-size:18px; font-weight:bold;"></span>
+  </div>
+  <div>
+  	<label>Calorias para subir de peso:</label> 
+  	<span id="subir" style="margin-left: .5em; font-size:18px; font-weight:bold;"></span>
+  </div> 
+  </div>
+  </fieldset> 
+</form>
+
+	
+				
+						
+ <script>
+ 	jQuery("div.related-posts ul li").addClass("col-xs-12 col-md-4");
+ 	jQuery("div.related-posts ul li a").addClass("bg-links");
+ 	//jQuery("div.related-posts ul li a").addClass("bg-links-related");
+ 	jQuery("ins").css('background-color','white');
+ 	/* jQuery("div.sd-social-icon-text").addClass("bg-links-related"); */
+
+ 	// Si no estamos en la calculadora Santoral-dia aplica bg-links
+ 	if( !jQuery('.calc-santoral-dia').length ) {
+	 	 
+ 	}
+ </script>
+
+  </body>
+</html>
+
+
+ 
+
+
+
+   
